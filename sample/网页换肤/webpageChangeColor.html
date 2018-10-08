@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>网页换肤</title>
+        <style>
+            * { /* 删除网站的默认样式，重置样式，大型网站不建议使用（过于消耗时间）*/               
+                margin: 0;
+                padding: 0;
+            }
+            li {
+                list-style: none; /* 无列表样式*/
+                float: left; /*向左浮动, 使元素块状显示，显示在一行*/
+            }
+            a {
+                text-decoration: none; /* 无下划线 */
+                color: #333;
+            }
+            body, html { /* 自适应浏览器高度 */               
+                height: 100%;
+            }
+            #outer {
+                width: 500px;
+                height: 60px;
+                margin: 50px auto;
+            }
+            #skin li{
+                width: 10px;
+                height: 10px;
+                padding: 5px;
+                margin-right: 10px;
+                cursor: pointer;
+            }
+            #skin li:nth-child(1) { /* 第一个li标签 */            
+                background:red;
+            }
+            #skin li:nth-child(2) { /* 第二个li标签 */  
+                background:green;
+            }
+            #skin li:nth-child(3) { /* 第三个li标签 */  
+                background:black;
+            }
+            #nav {
+                border: 1px solid #fff;
+                margin-top: 10px;
+                overflow: hidden; /* 元素溢出后隐藏 */
+                height: 30px;
+                background: green;
+            }
+            #nav li a {
+                padding: 0px 25px;
+                line-height: 30px;
+                color: #fff;
+                border-right: 1px solid #fff;
+            }
+            #nav li:last-child a {
+                border-right: 0; /* 删掉最后一个右侧边框 */
+            }
+        </style>
+        <link rel="stylesheet" href="./css/green.css" />
+    </head>
+    <body>
+       <div id="outer">
+		   <!--换肤按钮-->
+           <ul id="skin">
+               <li id="red" title="红色"></li>
+               <li id="green" class="current" title="绿色"></li>
+               <li id="black" title="黑色"></li>
+           </ul>      
+            <br />
+			<!--导航栏-->
+            <ul id="nav">
+                <li><a href="javascript:">新闻</a></li>
+                <li><a href="javascript:">娱乐</a></li>
+                <li><a href="javascript:">体育</a></li>
+                <li><a href="javascript:">电影</a></li>
+                <li><a href="javascript:">音乐</a></li>
+                <li><a href="javascript:">旅游</a></li>
+            </ul> 
+        </div>
+    </body>
+    <script>
+		//window.onload用来在文档加载完成后在调用js
+        window.onload = function() {
+            var oLink = document.getElementsByTagName("link")[0];
+            var aSkins = document.getElementById("skin").getElementsByTagName("li");
+
+            for(var i = 0; i < aSkins.length; i++) {
+                aSkins[i].onclick = function() {
+                    for(var j in aSkins) {
+                        aSkins[j].className = "";
+                    }
+                    this.className = "current";
+                    oLink['href'] = "./css/" + this.id + ".css";
+                }                
+            }
+        }
+    </script>
+</html>
+
