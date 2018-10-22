@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <title>可移动弹出框</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            #btn {
+                width: 100px;
+                height: 40px;
+                line-height: 40px;
+                outline: 0;
+                border: 1px solid #333;
+                background: #555;
+                color: #fff;
+                cursor: pointer;
+            }
+            #btn:hover {
+                background: #444;
+            }
+            #login {
+                width: 260px;
+                height: 300px;
+                box-shadow: 0 0 5px #999;
+                padding: 10px 20px;
+                position: relative;
+                display: none;
+                background: #fff;
+            }
+            #close {
+                position: absolute;
+                width: 26px;
+                height: 26px;
+                right: 10px; /* 右侧定位 */
+                top: 10px;
+                color: #eee;
+                background-color: #555;
+                font-size: 26px;
+                font-weight: 100;
+                text-align:center; /*文字水平居中*/
+                line-height: 26px; /*文字垂直居中*/
+                cursor: default; /*鼠标样式默认 */
+            }
+            #head {
+                text-align: center;
+                font-size: 20px;
+                line-height: 2em;
+                width: 100%;
+            }
+            #login p label {
+                font-size: 16px;
+                line-height: 3em;
+            }
+            #login p:nth-of-type(7) {
+                font-size: 12px;
+                color: #aaa;
+                text-align: center;
+                line-height: 3em;
+            }
+            #login input {
+                width: 100%;
+                height: 30px;
+            }
+            #login input[type=button] {
+                height: 40px;
+                margin-top: 20px;
+                background: #222;
+                color: #fff;
+                outline: 0;
+                border: 1px solid #111;
+            }
+        </style>
+    </head>
+    <body style="height: 2000px;">
+        <input type="button" value="点击显示弹窗" id="btn">
+        <div id="login">
+            <div id="close">&times;</div>
+            <p id="head">登录</p>
+            <p><label for="email">邮箱 :</label></p>
+            <p><input type="email" id="email"></p>
+            <p><label for="pwd">密码 :</label></p>
+            <p><input type="password" id="pwd"></p>
+            <p><input type="button" value="登 录"></p>
+            <p>忘记密码 创建账号</p>
+        </div>
+    </body>
+    <script type="text/javascript" src="./myJs.js"></script>
+    <script>
+        window.onload = function() {
+            //弹窗界面
+            var login = document.getElementById("login");
+            //按钮
+            var btn = document.getElementById("btn");
+            //弹窗头部
+            var head = document.getElementById("head");
+            //弹窗关闭按钮
+            var close = document.getElementById("close");
+
+            //点击按钮，弹出弹窗
+            btn.onclick = function() {
+                popAlert(login, head);
+            }
+            //点击关闭按钮，弹窗消失
+            close.onclick = function() {
+                login.style.display = "none";
+                document.body.removeChild(layer);
+            }
+        }
+    </script>
+</html>

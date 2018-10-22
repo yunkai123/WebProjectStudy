@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>星星闪烁</title>
+    </head>
+    <body style="background:#000">
+        <div id="stars"></div>
+        <script>
+            var stars = document.getElementById('stars');
+            var Obj = function() {} //创建一个对象
+
+            Obj.prototype.drawStar = function() {
+                var odiv = document.createElement('div');//创建div元素
+                odiv.style.width = "7px";//设置元素宽度
+                odiv.style.height = "7px";//设置元素高度
+                odiv.style.position = 'relative';//设置元素定位使用的类型
+                odiv.style.left = Math.floor(document.body.clientWidth * Math.random()) + "px";//随机生成一个左侧位置
+                odiv.style.top = Math.floor(document.body.clientHeight * Math.random()) + "px";//随即生成一个顶部位置
+                odiv.style.overflow = "hidden";//溢出部分隐藏
+                stars.appendChild(odiv);//将元素放在stars元素里面
+
+                var ostar = document.createElement('img');//创建img元素（图像）
+                ostar.style.width = '49px';//设置元素宽度
+                ostar.style.height = '7px';//设置元素高度
+                ostar.src = 'imgs/star.png';//图片引用位置
+                ostar.style.position = 'absolute';//设置元素定位使用的类型
+                ostar.style.top = '0px';//顶部位置
+                odiv.appendChild(ostar);//将元素放在div元素里
+                Play(ostar);
+            }
+
+            //实现闪烁
+            function Play(ele) {
+                var i = Math.floor(Math.random() * 7);
+                var timer = setInterval(function() { //定时器
+                    if(i < 7) {
+                        ele.style.left = -i * 7 + 'px';
+                        i++;
+                    }
+                    else {
+                        i = 0;
+                    }
+                }, 100);
+            }
+			//创建30个星星
+            for(var i = 0; i < 30; i++) {
+                var obj = new Obj();
+                obj.drawStar();
+            }
+        </script>
+    </body>
+</html>
