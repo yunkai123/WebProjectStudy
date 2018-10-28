@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.clock {
+    width: 400px;
+    height: 400px;
+    border: 10px solid #333;
+    box-shadow: 0px 0px 20px 3px #444 inset;
+    border-radius: 50%;
+    position: relative;
+    margin: 5px auto;
+    z-index: 10;
+    background-color: #f6f6f6;
+}
+/* 钟表上的数字 */
+.clock-num {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    text-align: center;
+    line-height: 40px;
+    position: absolute;
+    z-index: 8;
+    color: #555;
+    font-family: fantasy; /* 字体 */
+}
+.em_num {
+    font-size: 28px;
+}
+.clock-line {
+    position: absolute;
+    z-index: 20;
+}
+.hour-line {
+    width: 100px;
+    height: 4px;
+    top: 198px;
+    left: 200px;
+    background-color: #000;
+    border-radius: 2px;
+    transform-origin: 0 50%;
+    box-shadow: 1px -3px 8px 3px #aaa;
+}
+.minute-line {
+    width: 130px;
+    height: 2px;
+    top: 199px;
+    left: 190px;
+    background-color: #000;
+    transform-origin: 7.692% 50%;
+    box-shadow: 1px -3px 8px 1px #aaa;
+}
+.second-line {
+    width: 170px;
+    height: 1px;
+    top: 199.5px;
+    left: 180px;
+    background-color: #f60;
+    transform-origin: 11.765% 50%;
+    box-shadow: 1px -3px 7px 1px #bbb;
+}
+.origin {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #000;
+    position: absolute;
+    top: 190px;
+    left: 190px;
+    z-index: 14;
+}
+/* 刻度 */
+#list {
+    list-style: none;
+    position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#list li {
+    list-style:none;
+    width: 2px;
+    height: 12px;
+    position: absolute;
+    left: 199px;
+    top: 4px;
+    transform-origin: center 196px; /* 相对元素左上角的位置 */
+    background-color:#555;
+}
+
+#list li:nth-child(5n+1) {
+    width: 4px;
+    height: 15px;
+}
